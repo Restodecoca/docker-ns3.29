@@ -1,6 +1,7 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 MAINTAINER Ryan Kurte <ryankurte@gmail.com>
 LABEL Description="Docker image for NS-3 Network Simulator"
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 # General dependencies
 RUN apt-get install -y \
@@ -16,13 +17,12 @@ RUN apt-get install -y \
   clang \
   valgrind \
   gsl-bin \
-  libgsl2 \
   libgsl-dev \
+  libgslcblas0 \
   flex \
   bison \
   libfl-dev \
   tcpdump \
-  sqlite \
   sqlite3 \
   libsqlite3-dev \
   libxml2 \
@@ -34,9 +34,9 @@ RUN apt-get install -y \
   qtbase5-dev
 # Python components
 RUN apt-get install -y \
-  python \
-  python-dev \
-  python-setuptools \
+  python3 \
+  python3-dev \
+  python3-setuptools \
   cmake \
   libc6-dev \
   libc6-dev-i386 \
