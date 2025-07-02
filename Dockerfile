@@ -8,6 +8,7 @@ RUN apt-get install -y \
   mercurial \
   wget \
   vim \
+  nano \
   autoconf \
   bzr \
   cvs \
