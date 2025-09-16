@@ -23,6 +23,7 @@ RUN apt-get install -y \
   bison \
   libfl-dev \
   tcpdump \
+  tshark \
   sqlite3 \
   libsqlite3-dev \
   libxml2 \
