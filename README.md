@@ -1,50 +1,50 @@
+
+
 # docker-ns3
 
-Este repositório contém uma imagem Docker configurada com o **NS-3.29** (Network Simulator 3), forkeada para uso em aulas de Redes de Computadores.
+This repository contains a Docker image configured with **NS-3.29** (Network Simulator 3), forked for use in Computer Networks classes.
 
-A imagem permite rodar simulações de forma isolada, sem necessidade de instalar dependências diretamente no sistema operacional.
+The image allows running simulations in an isolated environment, without the need to install dependencies directly on the host operating system.
 
 ---
 
-## 🛠️ Build da Imagem
+## Build the Image
 
-Clone o repositório e execute:
+Clone the repository:
+
+```bash
+git clone https://github.com/Restodecoca/docker-ns3.29
+```
+
+Then:
+
+```bash
+cd docker-ns3.29
+```
+
+and run:
 
 ```bash
 docker build -t ryankurte/docker-ns3 .
-````
+```
 
-> Isso criará a imagem localmente com todos os requisitos para compilar e rodar o NS-3.29.
+This will create the image locally with all the requirements to compile and run NS-3.29.
 
 ---
 
-## ▶️ Executar o Container
+## Running the Container
 
-### Execução simples (sem persistência de arquivos):
+### Simple execution (no persistence):
 
 ```bash
 docker run -it ryankurte/docker-ns3
 ```
 
-> Ideal para testes rápidos. Alterações feitas no container **não serão salvas** após sair.
-
 ---
 
-### Execução com volume (salva seus arquivos de simulação):
+## Example Simulation
 
-```bash
-docker run -it \
-  -v $HOME/ns3-work:/usr/ns-allinone-3.29/ns-3.29 \
-  ryankurte/docker-ns3
-```
-
-> Isso permite salvar códigos, resultados e compilações em uma pasta local no host (`~/ns3-work`).
-
----
-
-## 💡 Exemplo de simulação
-
-Dentro do container:
+Inside the container:
 
 ```bash
 cd /usr/ns-allinone-3.29/ns-3.29
@@ -54,43 +54,40 @@ cd /usr/ns-allinone-3.29/ns-3.29
 
 ---
 
-## 📎 Recursos incluídos na imagem
+## Features Included
 
-* NS-3.29 com exemplos e testes
-* G++/Clang, Python3, CMake, nano, vim
-* Suporte a simulações com parâmetros via linha de comando
-* Código-fonte disponível na pasta `/usr/ns-allinone-3.29/ns-3.29`
-
----
-
-## 👨‍🏫 Uso educacional
-
-Este fork foi adaptado para fins didáticos, com foco em atividades práticas de laboratório, incluindo:
-
-* Topologias com CSMA, P2P e Wi-Fi
-* Execução de scripts personalizados (`scratch/`)
-* Alteração de parâmetros de rede via `CommandLine`
+* NS-3.29 with examples and tests
+* G++/Clang, Python3, CMake, nano, vim, TShark (CLI version of Wireshark)
+* Support for command-line simulation parameters
+* Source code available under `/usr/ns-allinone-3.29/ns-3.29`
 
 ---
 
-## 📂 Organização recomendada
+## Educational Use
 
-Se quiser manter seu código separado:
+This fork has been adapted for teaching purposes, focusing on hands-on laboratory activities, including:
 
-```bash
-mkdir -p $HOME/ns3-work/scratch
-cp second.cc $HOME/ns3-work/scratch/
-```
-
-Então monte o volume como mostrado acima para garantir persistência.
+* Topologies with CSMA, Point-to-Point, and Wi-Fi
+* Running custom scripts from `scratch/`
+* Modifying network parameters via `CommandLine`
 
 ---
 
-## 🐧 Requisitos
+## Using with VS Code
 
-* Docker instalado (Linux, macOS ou Windows)
-* \~5 GB de espaço livre em disco
+This image can also be used with **Visual Studio Code** via the **Dev Containers extension**.
+To use it:
+
+1. Open VS Code.
+2. Go to the *Remote Explorer* panel.
+3. Locate and attach to your running container.
+
+You can then work with NS-3 directly inside the Docker environment, with access to the terminal, compilers, and your source code.
 
 ---
 
-Para dúvidas ou sugestões, abra uma issue no repositório original ou envie um pull request.
+## Requirements
+
+* Docker installed (Linux, macOS, or Windows)
+* ~5 GB of free disk space
+* Optional: Visual Studio Code with Dev Containers extension
